@@ -42,26 +42,27 @@ public class FloorPlacer extends Block {
     }
 
     public class FloorPlacerBuild extends Building {
-        public float timer;
+        public float t;
         @Override
         public void updateTile() {
             super.updateTile();
 
-            Mathf.randomSeed((long) (timer + x - y));
+            Mathf.randomSeed((long) (t + x - y));
             if(Mathf.chance(0.03f)){
-                Fx.smoke.at(x, y);
+                Fx.smokeCloud.at(x, y);
             }
-            if(timer >= consumesTime){
+            if(t >= consumesTime){
                 tile.setFloorNet(floor);
+                Fx.placeBlock.at(x, y);
                 tile.removeNet();
             }
-            timer++;
+            t++;
         }
 
         @Override
         public void draw() {
             super.draw();
-            Draw.rect(drill, x, y, Math.max((timer - 10) * Math.min(60 / timer, 1), 0));
+            Draw.rect(drill, x, y, 10 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
         }
     }
 }

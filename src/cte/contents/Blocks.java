@@ -1,5 +1,6 @@
 package cte.contents;
 
+import arc.math.Mathf;
 import cte.types.FloorPlacer;
 import cte.types.PoolMaker;
 import cte.types.WallBlaster;
@@ -19,7 +20,7 @@ public class Blocks {
             liquidCapacity = 10;
         }};
         block2 = new WallBlaster("wall-blaster"){{
-            setItem(Items.blastCompound, b ->b.items.get(Items.blastCompound));
+            setItem(Items.blastCompound, b -> Mathf.floor((float) b.items.get(Items.blastCompound) / 2));
             itemCapacity = 45;
             max = itemCapacity;
             size = 1;
@@ -28,7 +29,7 @@ public class Blocks {
         }};
         block3 = new FloorPlacer("floor-placer"){{
             size = 1;
-            health = 10;
+            health = 20;
             requirements(Category.effect, ItemStack.with(Items.copper, 130, Items.lead, 20));
         }};
     }
