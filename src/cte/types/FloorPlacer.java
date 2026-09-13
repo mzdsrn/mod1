@@ -48,7 +48,7 @@ public class FloorPlacer extends Block {
             super.updateTile();
 
             Mathf.randomSeed((long) (timer + x - y));
-            if(Mathf.chance(0.01f)){
+            if(Mathf.chance(0.03f)){
                 Fx.smoke.at(x, y);
             }
             if(timer >= consumesTime){

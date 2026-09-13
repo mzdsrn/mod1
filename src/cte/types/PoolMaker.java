@@ -33,13 +33,20 @@ public class PoolMaker extends LiquidBlock {
                 for(Block b : Vars.content.blocks()){
                     if(b.isFloor() && b.asFloor() != null && ((Floor)b).liquidDrop == l){
                         liquidToPool.put(l, b);
-                        liquidFilter[l.id] = true;
                     }
                 }
             }
             liquidToPool.put(Liquids.water, Vars.content.block("water"));
         }
         canOverdrive = false;
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        for(Liquid l : liquidToPool.keys()){
+            liquidFilter[l.id] = true;
+        }
     }
 
     @Override

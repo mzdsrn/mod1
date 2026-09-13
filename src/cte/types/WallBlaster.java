@@ -74,10 +74,11 @@ public class WallBlaster extends Block {
         @Override
         public void draw() {
             Draw.rect(bottom, x, y, 0);
-            super.draw();
-            Draw.rect(region, x, y);
+            drawShadow(tile);
+            Draw.rect(region, x, y, 0);
             Draw.rect(a, x, y, this.drawrot() - 90);
             Draw.z(Layer.max);
+            Draw.alpha(0.5f);
             float tx = x;
             float ty = y;
             float length = items.get(accept) * Vars.tilesize;
