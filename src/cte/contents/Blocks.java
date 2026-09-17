@@ -8,12 +8,15 @@ import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
-import mindustry.world.meta.BuildVisibility;
 
 import static mindustry.type.ItemStack.with;
 
 public class Blocks {
-    public static Block block, block2, block3, block4;
+    public static Block
+            block,
+            block2,
+            block3, block4
+    ;
 
     public static void load(){
         block = new PoolMaker("pool-maker"){{
@@ -31,16 +34,16 @@ public class Blocks {
         }};
         block3 = new FloorPlacer("floor-placer"){{
             size = 1;
-            health = 20;
+            health = 60;
             requirements(Category.effect, ItemStack.with(Items.copper, 130, Items.lead, 20));
+            recordOverlay = true;
         }};
         block4 = new FloorPlacer("core-zone-placer") {{
             size = 1;
-            health = 20;
-            requirements(Category.effect, with(Items.copper, 180, Items.lead, 100, Items.silicon, 10));
+            health = 50;
+            requirements(Category.effect, with(Items.copper, 80, Items.lead, 60, Items.silicon, 20));
             floor = mindustry.content.Blocks.coreZone.asFloor();
             consumesTime = consumesTime * 2.5f;
-            mindustry.content.Blocks.coreBastion.buildVisibility = BuildVisibility.shown;
         }};
     }
 }

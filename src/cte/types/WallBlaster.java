@@ -92,17 +92,6 @@ public class WallBlaster extends Block {
             return rotation * 90;
         }
 
-        @Override
-        public void drawSelect(){
-            super.drawSelect();
-            float tx = x;
-            float ty = y;
-            float length = items.get(accept) * Vars.tilesize;
-            float r = drawrot();
-            float px = tx + Mathf.cosDeg(r) * length;
-            float py = ty + Mathf.sinDeg(r) * length;
-            Drawf.dashLine(Pal.placing, tx, ty, px, py);
-        }
         public void explode(){
             int a = range.get(this);
             for(int i = 1; i < a; i++){
