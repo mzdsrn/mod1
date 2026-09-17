@@ -6,8 +6,6 @@ import arc.graphics.g2d.TextureRegion;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.gen.Building;
-import mindustry.graphics.Pal;
-import mindustry.ui.Bar;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.Floor;
 
