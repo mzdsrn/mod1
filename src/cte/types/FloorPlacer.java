@@ -6,10 +6,9 @@ import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
-import mindustry.game.Team;
 import mindustry.gen.Building;
+import mindustry.graphics.Pal;
 import mindustry.world.Block;
-import mindustry.world.Tile;
 import mindustry.world.blocks.environment.Floor;
 
 public class FloorPlacer extends Block {
@@ -32,11 +31,6 @@ public class FloorPlacer extends Block {
     }
 
     @Override
-    public boolean canPlaceOn(Tile tile, Team team, int rotation) {
-        return true;
-    }
-
-    @Override
     public TextureRegion[] icons() {
         return new TextureRegion[]{region, drill};
     }
@@ -49,7 +43,8 @@ public class FloorPlacer extends Block {
 
             Mathf.randomSeed((long) (t + x - y));
             if(Mathf.chance(0.03f)){
-                Fx.smokeCloud.at(x, y);
+                Mathf.randomSeed((long) (t + x - y + 12));
+                Fx.smokeCloud.at(x, y, Pal.gray.mulA(Mathf.random(0.8f, 1.5f)));
             }
             if(t >= consumesTime){
                 tile.setFloorNet(floor);

@@ -5,7 +5,6 @@ import arc.func.Func;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
-import arc.util.Log;
 import mindustry.Vars;
 import mindustry.content.Fx;
 import mindustry.entities.Damage;
@@ -34,6 +33,7 @@ public class WallBlaster extends Block {
         sync = true;
         solid = true;
         canOverdrive = false;
+        update = true;
     }
 
     @Override
@@ -55,7 +55,6 @@ public class WallBlaster extends Block {
     public void explode(float x, float y, Building build){
         Damage.dynamicExplosion(x, y, 0.5f, 0, 0, 15, true, Fx.flakExplosion);
         Damage.damage(x, y, 8, 5 * build.items.get(accept));
-        Log.log(Log.LogLevel.none, "exploded!");
     }
 
     @Override
@@ -74,7 +73,6 @@ public class WallBlaster extends Block {
         @Override
         public void draw() {
             Draw.rect(bottom, x, y, 0);
-            drawShadow(tile);
             Draw.rect(region, x, y, 0);
             Draw.rect(a, x, y, this.drawrot() - 90);
             Draw.z(Layer.max);
@@ -86,6 +84,7 @@ public class WallBlaster extends Block {
             float px = tx + Mathf.cosDeg(r) * length;
             float py = ty + Mathf.sinDeg(r) * length;
             Drawf.dashLine(Pal.placing, tx, ty, px, py);
+            Draw.alpha(1);
         }
 
         @Override
@@ -120,7 +119,6 @@ public class WallBlaster extends Block {
                 }
                 WallBlaster.this.explode(px, py, this);
             }
-            Log.log(Log.LogLevel.none, "removed");
             tile.removeNet();
         }
         @Override

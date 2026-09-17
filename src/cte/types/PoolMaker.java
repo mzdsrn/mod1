@@ -13,10 +13,12 @@ import mindustry.gen.Building;
 import mindustry.gen.Call;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Drawf;
+import mindustry.graphics.Pal;
 import mindustry.type.Liquid;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.liquid.LiquidBlock;
+import mindustry.world.meta.Stat;
 
 public class PoolMaker extends LiquidBlock {
     public static ObjectMap<Liquid, Block> liquidToPool = null;
@@ -50,6 +52,19 @@ public class PoolMaker extends LiquidBlock {
     }
 
     @Override
+    public void setStats() {
+        super.setStats();
+       stats.add(Stat.output, table -> {
+           table.row();
+           for(Liquid l : liquidToPool.keys()){
+               table.image(l.uiIcon).size(40).marginLeft(10);
+               table.image(liquidToPool.get(l).uiIcon).size(40).marginRight(-10);
+               table.row();
+           }
+       });
+    }
+
+    @Override
     public void load(){
         super.load();
         drill = Core.atlas.find(name + "-drill");
@@ -76,9 +91,9 @@ public class PoolMaker extends LiquidBlock {
                     Block b = liquidToPool.get(l);
                     if (b != null) {
                         Call.setFloor(tile, b, Blocks.air);
-                        Fx.flakExplosion.at(x, y);
+                        Call.effect(Fx.flakExplosion, x, y, 0, Pal.gray);
                         Call.setTile(tile, Blocks.air, Team.derelict, 0);
-                        Sounds.blockExplode1.at(x, y);
+                        Call.soundAt(Sounds.blockExplode1, x, y, 1, 1);
                     }
                 }
                 went++;

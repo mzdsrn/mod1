@@ -1,1 +1,1 @@
-A Java mindustry mod that lets you modify the environment.
+A Mindustry Java mod.

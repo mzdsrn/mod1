@@ -11,7 +11,7 @@ author: "No one"
 main: "cte.JavaMod"
 
 #the mod description as seen in the mod dialog
-description: "A Java mindustry mod that lets you modify the environment, like: destroy StaticWall, make a pool."
+description: "A Java mindustry mod that lets you modify the environment."
 
 #the mod version
 version: 1.0
