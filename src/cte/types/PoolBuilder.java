@@ -4,6 +4,7 @@ import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.struct.ObjectMap;
+import arc.util.Time;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
@@ -20,14 +21,14 @@ import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.liquid.LiquidBlock;
 import mindustry.world.meta.Stat;
 
-public class PoolMaker extends LiquidBlock {
+public class PoolBuilder extends LiquidBlock {
     public static ObjectMap<Liquid, Block> liquidToPool = null;
     public TextureRegion drill;
     public TextureRegion liquid;
     public TextureRegion bottom;
     public TextureRegion[] icon;
 
-    public PoolMaker(String name) {
+    public PoolBuilder(String name) {
         super(name);
         if(liquidToPool == null){
             liquidToPool = new ObjectMap<>();
@@ -78,7 +79,7 @@ public class PoolMaker extends LiquidBlock {
         return icon;
     }
 
-    public class PoolMakerBuild extends LiquidBuild{
+    public class PoolBuilderBuild extends LiquidBuild{
         public float went = 0;
         public float rotation = 0;
         public float stress = 0;
@@ -96,7 +97,7 @@ public class PoolMaker extends LiquidBlock {
                         Call.soundAt(Sounds.blockExplode1, x, y, 1, 1);
                     }
                 }
-                went++;
+                went += Time.delta;
                 stress += (float)(360 / 60);
             }else{
                 went = 0;

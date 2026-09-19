@@ -3,6 +3,7 @@ package cte.types;
 import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
+import arc.util.Time;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.gen.Building;
@@ -13,6 +14,7 @@ public class FloorPlacer extends Block {
     public Floor floor = Blocks.metalFloor.asFloor();
     public TextureRegion drill;
     public TextureRegion sdrill;
+    public TextureRegion node;
     // How long does it need to replace the floor.
     public float consumesTime = 240;
     // Whether keep the overlay.
@@ -31,6 +33,7 @@ public class FloorPlacer extends Block {
         super.load();
         drill = Core.atlas.find(name + "-drill");
         sdrill = Core.atlas.find(name + "-sdrill");
+        node = Core.atlas.find(name + "-drill-node");
     }
 
     @Override
@@ -51,7 +54,7 @@ public class FloorPlacer extends Block {
                 tile.removeNet();
                 if(recordOverlay) tile.setOverlayNet(ore);
             }
-            t++;
+            t += Time.delta;
         }
 
         @Override
@@ -59,6 +62,7 @@ public class FloorPlacer extends Block {
             super.draw();
             Draw.rect(sdrill, x, y, -2 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
             Draw.rect(drill, x, y, 10 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
+            Draw.rect(node, x, y, 10 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
         }
     }
 }

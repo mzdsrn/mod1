@@ -10,13 +10,13 @@ public class JavaMod extends Mod{
     public static String name = "changing-the-environment";
 
     public JavaMod(){
-        Log.info("Loading... I think you should listen to the music named \"White Happy\" from MARETU!");
+        Log.info("Loading...");
     }
 
     @Override
     public void loadContent(){
         Units.load();
         Blocks.load();
-        mindustry.content.Blocks.coreBastion.buildVisibility = BuildVisibility.shown;
+        mindustry.content.Blocks.coreShard.buildVisibility = BuildVisibility.shown;
     }
 }
