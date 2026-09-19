@@ -14,7 +14,7 @@ main: "cte.JavaMod"
 description: "A Java mindustry mod that lets you modify the environment."
 
 #the mod version
-version: 1.0
+version: 1.0.1
 
 #the minimum game build required to run this mod
 minGameVersion: 158

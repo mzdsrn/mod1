@@ -9,6 +9,7 @@ import mindustry.content.Fx;
 import mindustry.gen.Building;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.Floor;
+import mindustry.world.meta.Stat;
 
 public class FloorPlacer extends Block {
     public Floor floor = Blocks.metalFloor.asFloor();
@@ -38,7 +39,17 @@ public class FloorPlacer extends Block {
 
     @Override
     public TextureRegion[] icons() {
-        return new TextureRegion[]{region, drill};
+        return new TextureRegion[]{region, drill, node};
+    }
+
+    @Override
+    public void setStats() {
+        super.setStats();
+        stats.add(Stat.buildTime, consumesTime);
+        stats.add(Stat.output, t ->{
+            t.row();
+            t.image(floor.uiIcon).size(32);
+        });
     }
 
     public class FloorPlacerBuild extends Building {

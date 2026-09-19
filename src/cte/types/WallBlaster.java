@@ -16,6 +16,7 @@ import mindustry.graphics.Pal;
 import mindustry.type.Item;
 import mindustry.world.Block;
 import mindustry.world.Tile;
+import mindustry.world.meta.Stat;
 
 public class WallBlaster extends Block {
     public Func<Building, Integer> range;
@@ -58,6 +59,12 @@ public class WallBlaster extends Block {
     }
 
     @Override
+    public void setStats() {
+        super.setStats();
+        stats.add(Stat.input, accept);
+    }
+
+    @Override
     public void drawPlace(int x, int y, int rotation, boolean valid) {
         super.drawPlace(x, y, rotation, valid);
         float tx = x * Vars.tilesize;
@@ -79,7 +86,7 @@ public class WallBlaster extends Block {
             Draw.alpha(0.5f);
             float tx = x;
             float ty = y;
-            float length = items.get(accept) * Vars.tilesize;
+            float length = range.get(this) * Vars.tilesize;
             float r = drawrot();
             float px = tx + Mathf.cosDeg(r) * length;
             float py = ty + Mathf.sinDeg(r) * length;
