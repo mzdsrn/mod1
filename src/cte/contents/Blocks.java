@@ -19,7 +19,7 @@ public class Blocks {
 
     public static void load(){
         poolBuilder = new PoolBuilder("pool-builder"){{
-            requirements(Category.liquid, with(Items.graphite, 50, Items.silicon, 2, Items.copper, 10));
+            requirements(Category.liquid, with(Items.graphite, 50, Items.metaglass, 5, Items.copper, 40));
             size = 1;
             liquidCapacity = 10;
         }};
@@ -42,7 +42,7 @@ public class Blocks {
             health = 50;
             requirements(Category.effect, with(Items.copper, 80, Items.lead, 60, Items.silicon, 20));
             floor = mindustry.content.Blocks.coreZone.asFloor();
-            consumesTime = consumesTime * 2.5f;
+            consumesTime = consumesTime * 4f;
         }};
         oreBuilder = new OreBuilder("ore-builder"){{
             requirements(Category.crafting, with(Items.graphite, 80, Items.silicon, 10, Items.copper, 15));

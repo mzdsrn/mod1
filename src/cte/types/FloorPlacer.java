@@ -4,6 +4,7 @@ import arc.Core;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.util.Time;
+import cte.JavaMod;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.gen.Building;
@@ -45,7 +46,7 @@ public class FloorPlacer extends Block {
     @Override
     public void setStats() {
         super.setStats();
-        stats.add(Stat.buildTime, consumesTime);
+        stats.add(JavaMod.consumesTime, consumesTime);
         stats.add(Stat.output, t ->{
             t.row();
             t.image(floor.uiIcon).size(32);

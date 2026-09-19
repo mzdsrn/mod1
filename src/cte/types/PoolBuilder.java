@@ -5,6 +5,7 @@ import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.struct.ObjectMap;
 import arc.util.Time;
+import cte.JavaMod;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
@@ -59,6 +60,7 @@ public class PoolBuilder extends LiquidBlock {
             table.row();
             for(Liquid l : liquidToPool.keys()){
                 table.image(l.uiIcon).size(32).marginLeft(10);
+                table.image(Core.atlas.find(JavaMod.name + "-arrow")).size(32);
                 table.image(liquidToPool.get(l).uiIcon).size(32).marginRight(-10);
                 table.row();
             }

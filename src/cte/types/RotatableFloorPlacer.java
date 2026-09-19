@@ -5,6 +5,7 @@ import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.util.Time;
+import cte.JavaMod;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
@@ -15,6 +16,7 @@ import mindustry.graphics.Pal;
 import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.blocks.environment.Floor;
+import mindustry.world.meta.Stat;
 
 public class RotatableFloorPlacer extends Block {
     public Floor floor = Blocks.metalFloor.asFloor();
@@ -60,6 +62,16 @@ public class RotatableFloorPlacer extends Block {
         Tile t = Vars.world.tileWorld(px, py);
         if(t == null) return false;
         return t.floor().isLiquid || t.floor().isDeep() || t.floor().solid;
+    }
+
+    @Override
+    public void setStats() {
+        super.setStats();
+        stats.add(JavaMod.consumesTime, consumesTime);
+        stats.add(Stat.output, t ->{
+            t.row();
+            t.image(floor.uiIcon).size(32);
+        });
     }
 
     public class RotatableFloorPlacerBuild extends Building {

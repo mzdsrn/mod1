@@ -6,9 +6,11 @@ import cte.contents.Units;
 import mindustry.content.TechTree;
 import mindustry.mod.*;
 import mindustry.world.meta.BuildVisibility;
+import mindustry.world.meta.Stat;
 
 public class JavaMod extends Mod{
     public static String name = "changing-the-environment";
+    public static Stat consumesTime = new Stat("consumesTime");
 
     public JavaMod(){
         Log.info("Loading...");
