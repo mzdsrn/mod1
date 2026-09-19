@@ -46,7 +46,7 @@ public class FloorPlacer extends Block {
     @Override
     public void setStats() {
         super.setStats();
-        stats.add(JavaMod.consumesTime, consumesTime);
+        stats.add(JavaMod.consumesTime, consumesTime / 60);
         stats.add(Stat.output, t ->{
             t.row();
             t.image(floor.uiIcon).size(32);
