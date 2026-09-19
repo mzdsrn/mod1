@@ -55,14 +55,14 @@ public class PoolBuilder extends LiquidBlock {
     @Override
     public void setStats() {
         super.setStats();
-       stats.add(Stat.output, table -> {
-           table.row();
-           for(Liquid l : liquidToPool.keys()){
-               table.image(l.uiIcon).size(40).marginLeft(10);
-               table.image(liquidToPool.get(l).uiIcon).size(40).marginRight(-10);
-               table.row();
-           }
-       });
+        stats.add(Stat.output, table -> {
+            table.row();
+            for(Liquid l : liquidToPool.keys()){
+                table.image(l.uiIcon).size(40).marginLeft(10);
+                table.image(liquidToPool.get(l).uiIcon).size(40).marginRight(-10);
+                table.row();
+            }
+        });
     }
 
     @Override

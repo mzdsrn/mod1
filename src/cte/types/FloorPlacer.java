@@ -62,7 +62,7 @@ public class FloorPlacer extends Block {
             super.draw();
             Draw.rect(sdrill, x, y, -2 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
             Draw.rect(drill, x, y, 10 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
-            Draw.rect(node, x, y, 10 * Math.max((t - 10) * Math.min(t / 60, 1), 0));
+            Draw.rect(node, x, y, 0);
         }
     }
 }

@@ -58,6 +58,7 @@ public class RotatableFloorPlacer extends Block {
         float px = tile.drawx() + Mathf.cosDeg(r) * l;
         float py = tile.drawy() + Mathf.sinDeg(r) * l;
         Tile t = Vars.world.tileWorld(px, py);
+        if(t == null) return false;
         return t.floor().isLiquid || t.floor().isDeep() || t.floor().solid;
     }
 
@@ -73,6 +74,7 @@ public class RotatableFloorPlacer extends Block {
             float px = x + Mathf.cosDeg(r) * l;
             float py = y + Mathf.sinDeg(r) * l;
             if(t >= consumesTime){
+                if(Vars.world.tileWorld(px, py) == null) return;
                 Vars.world.tileWorld(px, py).setFloorNet(floor);
                 Fx.placeBlock.at(px, py);
                 placed(px, py);
@@ -90,6 +92,7 @@ public class RotatableFloorPlacer extends Block {
             float r = rotation * 90;
             float px = x + Mathf.cosDeg(r) * l;
             float py = y + Mathf.sinDeg(r) * l;
+            Draw.alpha(t / consumesTime);
             Drawf.dashSquare(Pal.placing, px, py, size * Vars.tilesize);
         }
 
